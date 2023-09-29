@@ -18,44 +18,47 @@ class NameInputView extends StatefulWidget {
 class _NameInputViewState extends State<NameInputView> {
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: [
-        Container(
-          margin: const EdgeInsets.only(top: 120),
-          width: context.dynamicWidth(200),
-          child: Text(
-            "Let's get started. \n What's your name?",
-            style: Theme.of(context).textTheme.titleMedium,
-            textAlign: TextAlign.center,
+    return SizedBox(
+      height: context.multiplierHeight(1),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Container(
+            margin: const EdgeInsets.only(top: 120),
+            width: context.dynamicWidth(200),
+            child: Text(
+              "Let's get started. \n What's your name?",
+              style: Theme.of(context).textTheme.titleMedium,
+              textAlign: TextAlign.center,
+            ),
           ),
-        ),
-        SizedBox(
-          height: context.dynamicHeight(150),
-        ),
-        SizedBox(
-          height: context.multiplierHeight(0.25),
-          child: Column(
-            children: [
-              BlocBuilder<NameInputViewCubit, NameInputViewState>(
-                builder: (context, state) {
-                  return CustomTextField(
-                    arrowEnabled: state.nextButtonEnabled,
-                    onChanged: BlocProvider.of<NameInputViewCubit>(context)
-                        .textFieldOnChanged,
-                    textFieldLabel: 'First name',
-                    onArrowPressed: widget.onPressed,
-                  );
-                },
-              ),
-              SizedBox(
-                height: context.dynamicHeight(30),
-              ),
-              const TermsOfService(),
-            ],
+          SizedBox(
+            height: context.dynamicHeight(150),
           ),
-        ),
-      ],
+          SizedBox(
+            height: context.multiplierHeight(0.25),
+            child: Column(
+              children: [
+                BlocBuilder<NameInputViewCubit, NameInputViewState>(
+                  builder: (context, state) {
+                    return CustomTextField(
+                      arrowEnabled: state.nextButtonEnabled,
+                      onChanged: BlocProvider.of<NameInputViewCubit>(context)
+                          .textFieldOnChanged,
+                      textFieldLabel: 'First name',
+                      onArrowPressed: widget.onPressed,
+                    );
+                  },
+                ),
+                SizedBox(
+                  height: context.dynamicHeight(30),
+                ),
+                const TermsOfService(),
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
