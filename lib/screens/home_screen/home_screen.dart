@@ -21,10 +21,11 @@ class _HomeScreenState extends State<HomeScreen> {
       scaffoldChild: Container(
         decoration: const BoxDecoration(
           image: DecorationImage(
+            alignment: Alignment.bottomCenter,
             image: AssetImage(
-              ImageConstants.homeScreenMapImage,
+              ImageConstants.homeScreenMerged,
             ),
-            fit: BoxFit.cover,
+            fit: BoxFit.contain,
           ),
         ),
         child: Stack(

@@ -92,7 +92,7 @@ class NavDrawer extends StatelessWidget {
                     children: [
                       Text(
                         'Discover SafeNow',
-                        style: ThemeConstants.drawerSmallText,
+                        style: ThemeConstants.drawerSmallTextBold,
                       ),
                       Icon(Icons.keyboard_arrow_down),
                     ],

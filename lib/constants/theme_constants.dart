@@ -11,9 +11,15 @@ class ThemeConstants {
     letterSpacing: 0.25,
     color: Colors.black,
   );
-  static const TextStyle drawerSmallText = TextStyle(
+  static const TextStyle drawerSmallTextBold = TextStyle(
     fontSize: 12,
     fontWeight: FontWeight.w600,
+    letterSpacing: 0.25,
+    color: Colors.black,
+  );
+  static const TextStyle drawerSmallTextLight = TextStyle(
+    fontSize: 12,
+    fontWeight: FontWeight.w500,
     letterSpacing: 0.25,
     color: Colors.black,
   );

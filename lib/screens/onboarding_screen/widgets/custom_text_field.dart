@@ -55,15 +55,13 @@ class _CustomTextFieldState extends State<CustomTextField> {
                     : ThemeConstants.labelMedium,
                 controller: _controller,
                 onChanged: (value) => widget.onChanged.call(value),
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                   enabledBorder: UnderlineInputBorder(
-                    borderSide: BorderSide(
-                        color: Colors.black54,
-                        width: widget.isPhoneField ? 1 : 2),
+                    borderSide: BorderSide(color: Colors.black12, width: 1),
                   ),
                   focusedBorder: UnderlineInputBorder(
                       borderSide: BorderSide(
-                    width: widget.isPhoneField ? 1 : 2,
+                    width: 2,
                     color: Colors.blue,
                   )),
                 ),

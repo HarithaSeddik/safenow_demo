@@ -55,7 +55,7 @@ class GroupWidget extends StatelessWidget {
         ),
         const Text(
           "New group",
-          style: ThemeConstants.drawerSmallText,
+          style: ThemeConstants.drawerSmallTextLight,
         ),
       ],
     );
