@@ -37,7 +37,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           textTheme: ThemeConstants.customTextTheme,
           colorScheme: ThemeConstants.customColorScheme,
-          fontFamily: 'Linik/Sans', //Use downloaded font family over the app
+          fontFamily: 'SFUIDisplay', //Use downloaded font family over the app
           useMaterial3: true,
         ),
         home: const OnBoardingScreen(), // initial screen
