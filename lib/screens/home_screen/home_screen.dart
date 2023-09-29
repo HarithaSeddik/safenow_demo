@@ -23,7 +23,7 @@ class _HomeScreenState extends State<HomeScreen> {
           image: DecorationImage(
             alignment: Alignment.bottomCenter,
             image: AssetImage(
-              ImageConstants.homeScreenMerged,
+              ImageConstants.homeScreenMapOverlay,
             ),
             fit: BoxFit.contain,
           ),
