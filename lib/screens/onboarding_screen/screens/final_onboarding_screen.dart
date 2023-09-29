@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:safenow_demo/constants/theme_constants.dart';
-import 'package:safenow_demo/views/widgets/custom_button.dart';
+import 'package:safenow_demo/config/theme_constants.dart';
+import '../../widgets/custom_button.dart';
 
 class FinalOnboardingScreen extends StatelessWidget {
   const FinalOnboardingScreen({super.key, required this.onPressed});

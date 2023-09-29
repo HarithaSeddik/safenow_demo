@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:safenow_demo/constants/theme_constants.dart';
+import 'package:safenow_demo/config/theme_constants.dart';
 import 'package:safenow_demo/extensions/context_extensions.dart';
-import 'package:safenow_demo/views/onboarding_screen/screens/name_onboarding_screen/cubit/name_onboarding_screen_cubit.dart';
+import '../screens/name_onboarding_screen/cubit/name_onboarding_screen_cubit.dart';
 
 class TermsOfService extends StatefulWidget {
   const TermsOfService({super.key});

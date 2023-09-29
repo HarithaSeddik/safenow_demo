@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:safenow_demo/constants/theme_constants.dart';
+import 'package:safenow_demo/config/theme_constants.dart';
 
 import 'package:safenow_demo/extensions/context_extensions.dart';
-import 'package:safenow_demo/views/onboarding_screen/screens/email_onboarding_screen/cubit/email_onboarding_screen_cubit.dart';
-import 'package:safenow_demo/views/onboarding_screen/screens/name_onboarding_screen/cubit/name_onboarding_screen_cubit.dart';
-
-import 'package:safenow_demo/views/onboarding_screen/widgets/custom_text_field.dart';
+import '../../widgets/custom_text_field.dart';
+import '../name_onboarding_screen/cubit/name_onboarding_screen_cubit.dart';
+import 'cubit/email_onboarding_screen_cubit.dart';
 
 class EnterEmailOnboardingScreen extends StatefulWidget {
   const EnterEmailOnboardingScreen({

@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:safenow_demo/views/home_screen/home_screen.dart';
-import 'package:safenow_demo/views/onboarding_screen/screens/email_onboarding_screen/enter_email_onboarding_screen.dart';
-import 'package:safenow_demo/views/onboarding_screen/screens/final_onboarding_screen.dart';
-import 'package:safenow_demo/views/onboarding_screen/screens/name_onboarding_screen/name_onboarding_screen.dart';
-import 'package:safenow_demo/views/onboarding_screen/screens/otp_onboarding_screen/cubit/otp_screen_cubit.dart';
-import 'package:safenow_demo/views/onboarding_screen/screens/otp_onboarding_screen/otp_onboarding_screen.dart';
-import 'package:safenow_demo/views/onboarding_screen/screens/welcome_onboarding_screen.dart';
-import 'package:safenow_demo/views/widgets/custom_page_scaffold.dart';
-
+import '../home_screen/home_screen.dart';
+import '../widgets/custom_page_scaffold.dart';
 import 'screens/email_onboarding_screen/cubit/email_onboarding_screen_cubit.dart';
+import 'screens/email_onboarding_screen/enter_email_onboarding_screen.dart';
+import 'screens/final_onboarding_screen.dart';
 import 'screens/name_onboarding_screen/cubit/name_onboarding_screen_cubit.dart';
+import 'screens/name_onboarding_screen/name_onboarding_screen.dart';
+import 'screens/otp_onboarding_screen/cubit/otp_screen_cubit.dart';
+import 'screens/otp_onboarding_screen/otp_onboarding_screen.dart';
+import 'screens/welcome_onboarding_screen.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({super.key});

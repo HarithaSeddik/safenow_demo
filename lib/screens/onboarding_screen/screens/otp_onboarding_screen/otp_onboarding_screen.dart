@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:safenow_demo/constants/theme_constants.dart';
+import 'package:safenow_demo/config/theme_constants.dart';
 import 'package:safenow_demo/extensions/context_extensions.dart';
-import 'package:safenow_demo/views/onboarding_screen/screens/email_onboarding_screen/cubit/email_onboarding_screen_cubit.dart';
-import 'package:safenow_demo/views/onboarding_screen/screens/otp_onboarding_screen/cubit/otp_screen_cubit.dart';
+import '../email_onboarding_screen/cubit/email_onboarding_screen_cubit.dart';
+import 'cubit/otp_screen_cubit.dart';
 
 class OtpOnboardingScreen extends StatefulWidget {
   const OtpOnboardingScreen({

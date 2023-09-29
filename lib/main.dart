@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:safenow_demo/constants/theme_constants.dart';
-import 'package:safenow_demo/views/home_screen/cubit/home_screen_cubit.dart';
-import 'package:safenow_demo/views/onboarding_screen/onboarding_screen.dart';
-import 'views/onboarding_screen/cubit/onboarding_screen_cubit.dart';
+import 'package:safenow_demo/config/theme_constants.dart';
+import 'screens/home_screen/cubit/home_screen_cubit.dart';
+import 'screens/onboarding_screen/cubit/onboarding_screen_cubit.dart';
+import 'screens/onboarding_screen/onboarding_screen.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,10 +34,10 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           textTheme: ThemeConstants.customTextTheme,
           colorScheme: ThemeConstants.customColorScheme,
-          fontFamily: 'Linik/Sans',
+          fontFamily: 'Linik/Sans', //Use downloaded font family over the app
           useMaterial3: true,
         ),
-        home: const OnBoardingScreen(),
+        home: const OnBoardingScreen(), // initial screen
       ),
     );
   }
