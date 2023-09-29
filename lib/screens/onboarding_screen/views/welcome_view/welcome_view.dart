@@ -22,10 +22,10 @@ class WelcomeView extends StatelessWidget {
         ),
         const Spacer(),
         SizedBox(
-          height: context.dynamicHeight(280),
+          height: context.dynamicHeight(400),
           child: Image.asset(
-            ImageConstants.welcomeOnBoardingScreenImage,
-            fit: BoxFit.fill,
+            ImageConstants.welcomeOnBoardingShadowScreenImage,
+            fit: BoxFit.cover,
           ),
         ),
         const Spacer(),

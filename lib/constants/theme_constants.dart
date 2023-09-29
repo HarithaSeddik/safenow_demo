@@ -5,9 +5,9 @@ import 'package:pin_code_fields/pin_code_fields.dart';
 /// better memory management of global data
 
 class ThemeConstants {
-  static const TextStyle headlineMediumStyle = TextStyle(
+  static TextStyle headlineMediumStyle = TextStyle(
     fontSize: 32,
-    fontWeight: FontWeight.w600,
+    fontWeight: FontWeight.lerp(FontWeight.w800, FontWeight.w900, 0.4),
     letterSpacing: 0.25,
     color: Colors.black,
   );
@@ -86,7 +86,7 @@ class ThemeConstants {
 
   static const Color secondaryTextColor = Color(0xff1b6fc5);
   //Store a static customTextTheme to be used throughout the app
-  static TextTheme customTextTheme = const TextTheme(
+  static TextTheme customTextTheme = TextTheme(
           headlineMedium: headlineMediumStyle,
           labelLarge: labelLargeStyle,
           titleMedium: titleMediumStyle,
@@ -95,7 +95,7 @@ class ThemeConstants {
           bodySmall: bodySmallStyle,
           labelMedium: labelMedium)
       .apply(
-    fontFamily: 'LinikSans',
+    fontFamily: 'SFUIDisplay',
   );
 
   // Now for general color theme
