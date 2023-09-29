@@ -1,10 +1,10 @@
 import 'package:bloc/bloc.dart';
 
-part 'email_onboarding_screen_state.dart';
+part 'phone_input_view_state.dart';
 
-class EmailOnboardingScreenCubit extends Cubit<EmailOnboardingScreenState> {
-  EmailOnboardingScreenCubit()
-      : super(const EmailOnboardingScreenState(
+class PhoneInputViewCubit extends Cubit<PhoneInputViewState> {
+  PhoneInputViewCubit()
+      : super(const PhoneInputViewState(
           textFieldIsNotEmpty: false,
           nextButtonEnabled: false,
         ));

@@ -1,26 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:safenow_demo/config/theme_constants.dart';
+import 'package:safenow_demo/constants/theme_constants.dart';
 
 import 'package:safenow_demo/extensions/context_extensions.dart';
+import 'package:safenow_demo/screens/onboarding_screen/views/name_input_view/cubit/name_input_view_cubit.dart';
 import '../../widgets/custom_text_field.dart';
-import '../name_onboarding_screen/cubit/name_onboarding_screen_cubit.dart';
-import 'cubit/email_onboarding_screen_cubit.dart';
+import 'cubit/phone_input_view_cubit.dart';
 
-class EnterEmailOnboardingScreen extends StatefulWidget {
-  const EnterEmailOnboardingScreen({
+class PhoneInputView extends StatefulWidget {
+  const PhoneInputView({
     super.key,
     required this.onPressed,
   });
   final Function() onPressed;
 
   @override
-  State<EnterEmailOnboardingScreen> createState() =>
-      _EnterEmailOnboardingScreenState();
+  State<PhoneInputView> createState() => _PhoneInputViewState();
 }
 
-class _EnterEmailOnboardingScreenState
-    extends State<EnterEmailOnboardingScreen> {
+class _PhoneInputViewState extends State<PhoneInputView> {
   final String _titleText = "Nice to meet you, ";
   final String _bodyText =
       "To make sure that you are a real person, please enter your phone number here: ";
@@ -33,9 +31,8 @@ class _EnterEmailOnboardingScreenState
         Container(
           margin: const EdgeInsets.only(top: 100),
           width: context.dynamicWidth(200),
-          child:
-              BlocBuilder<NameOnboardingScreenCubit, NameOnboardingScreenState>(
-            bloc: BlocProvider.of<NameOnboardingScreenCubit>(context),
+          child: BlocBuilder<NameInputViewCubit, NameInputViewState>(
+            bloc: BlocProvider.of<NameInputViewCubit>(context),
             builder: (context, state) {
               return RichText(
                 text: TextSpan(
@@ -65,11 +62,11 @@ class _EnterEmailOnboardingScreenState
         const SizedBox(
           height: 50,
         ),
-        BlocBuilder<EmailOnboardingScreenCubit, EmailOnboardingScreenState>(
+        BlocBuilder<PhoneInputViewCubit, PhoneInputViewState>(
           builder: (context, state) {
             return CustomTextField(
               arrowEnabled: state.nextButtonEnabled,
-              onChanged: BlocProvider.of<EmailOnboardingScreenCubit>(context)
+              onChanged: BlocProvider.of<PhoneInputViewCubit>(context)
                   .textFieldOnChanged,
               textFieldLabel: 'Phone',
               onArrowPressed: widget.onPressed,

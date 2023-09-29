@@ -1,7 +1,7 @@
-part of 'name_onboarding_screen_cubit.dart';
+part of 'name_input_view_cubit.dart';
 
-final class NameOnboardingScreenState {
-  const NameOnboardingScreenState({
+final class NameInputViewState {
+  const NameInputViewState({
     required this.userInputText,
     required this.textFieldIsNotEmpty,
     required this.termsOfServiceAreAccepted,
@@ -10,13 +10,13 @@ final class NameOnboardingScreenState {
   final bool textFieldIsNotEmpty, termsOfServiceAreAccepted, nextButtonEnabled;
   final String userInputText;
 
-  NameOnboardingScreenState copyWith({
+  NameInputViewState copyWith({
     bool? textFieldIsNotEmpty,
     bool? termsOfServiceAreAccepted,
     bool? nextButtonEnabled,
     String? userInputText,
   }) {
-    return NameOnboardingScreenState(
+    return NameInputViewState(
       textFieldIsNotEmpty: textFieldIsNotEmpty ?? this.textFieldIsNotEmpty,
       termsOfServiceAreAccepted:
           termsOfServiceAreAccepted ?? this.termsOfServiceAreAccepted,

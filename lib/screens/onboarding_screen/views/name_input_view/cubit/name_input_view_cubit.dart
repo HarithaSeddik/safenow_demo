@@ -1,9 +1,9 @@
 import 'package:bloc/bloc.dart';
-part 'name_onboarding_screen_state.dart';
+part 'name_input_view_state.dart';
 
-class NameOnboardingScreenCubit extends Cubit<NameOnboardingScreenState> {
-  NameOnboardingScreenCubit()
-      : super(const NameOnboardingScreenState(
+class NameInputViewCubit extends Cubit<NameInputViewState> {
+  NameInputViewCubit()
+      : super(const NameInputViewState(
             textFieldIsNotEmpty: false,
             termsOfServiceAreAccepted: false,
             nextButtonEnabled: false,

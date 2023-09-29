@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:safenow_demo/config/theme_constants.dart';
-import '../../widgets/custom_button.dart';
+import 'package:safenow_demo/constants/theme_constants.dart';
+import '../../../widgets/custom_button.dart';
 
-class FinalOnboardingScreen extends StatelessWidget {
-  const FinalOnboardingScreen({super.key, required this.onPressed});
+class FinalOnboardingView extends StatelessWidget {
+  const FinalOnboardingView({super.key, required this.onPressed});
   final Function() onPressed;
   @override
   Widget build(BuildContext context) {

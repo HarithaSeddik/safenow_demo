@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:safenow_demo/config/theme_constants.dart';
+import 'package:safenow_demo/constants/theme_constants.dart';
 import 'package:safenow_demo/extensions/context_extensions.dart';
-import '../screens/name_onboarding_screen/cubit/name_onboarding_screen_cubit.dart';
+import 'package:safenow_demo/screens/onboarding_screen/views/name_input_view/cubit/name_input_view_cubit.dart';
 
 class TermsOfService extends StatefulWidget {
   const TermsOfService({super.key});
@@ -22,11 +22,11 @@ class _TermsOfServiceState extends State<TermsOfService> {
         direction: Axis.horizontal,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          BlocBuilder<NameOnboardingScreenCubit, NameOnboardingScreenState>(
+          BlocBuilder<NameInputViewCubit, NameInputViewState>(
             builder: (context, state) {
               return Center(
                   child: InkWell(
-                onTap: () => BlocProvider.of<NameOnboardingScreenCubit>(context)
+                onTap: () => BlocProvider.of<NameInputViewCubit>(context)
                     .toggleTermsOfService(),
                 child: Container(
                   decoration: const BoxDecoration(

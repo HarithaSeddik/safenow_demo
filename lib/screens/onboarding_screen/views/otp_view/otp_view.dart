@@ -2,28 +2,28 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:safenow_demo/config/theme_constants.dart';
+import 'package:safenow_demo/constants/theme_constants.dart';
 import 'package:safenow_demo/extensions/context_extensions.dart';
-import '../email_onboarding_screen/cubit/email_onboarding_screen_cubit.dart';
-import 'cubit/otp_screen_cubit.dart';
+import 'package:safenow_demo/screens/onboarding_screen/views/phone_input_view/cubit/phone_input_view_cubit.dart';
+import 'cubit/otp_view_cubit.dart';
 
-class OtpOnboardingScreen extends StatefulWidget {
-  const OtpOnboardingScreen({
+class OtpView extends StatefulWidget {
+  const OtpView({
     super.key,
   });
 
   @override
-  State<OtpOnboardingScreen> createState() => _OtpOnboardingScreenState();
+  State<OtpView> createState() => _OtpViewState();
 }
 
-class _OtpOnboardingScreenState extends State<OtpOnboardingScreen> {
+class _OtpViewState extends State<OtpView> {
   final String _textPrompt = "Please enter the verification code we sent you.";
 
   final String _detailText = "Did not receive code? Resend";
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<OtpScreenCubit, OtpScreenState>(
+    return BlocBuilder<OtpViewCubit, OtpViewState>(
       builder: (context, state) {
         return state is Loading
             ? const Center(
@@ -55,8 +55,7 @@ class _OtpOnboardingScreenState extends State<OtpOnboardingScreen> {
                       textAlign: TextAlign.center,
                     ),
                   ),
-                  BlocBuilder<EmailOnboardingScreenCubit,
-                      EmailOnboardingScreenState>(
+                  BlocBuilder<PhoneInputViewCubit, PhoneInputViewState>(
                     builder: (context, state) {
                       return Text(
                         state.userEmailText ?? '',
@@ -68,7 +67,7 @@ class _OtpOnboardingScreenState extends State<OtpOnboardingScreen> {
                   SizedBox(
                     height: context.dynamicHeight(150),
                   ),
-                  BlocBuilder<OtpScreenCubit, OtpScreenState>(
+                  BlocBuilder<OtpViewCubit, OtpViewState>(
                     builder: (context, state) {
                       return PinCodeTextField(
                         autoFocus: state is Initial,
@@ -87,7 +86,7 @@ class _OtpOnboardingScreenState extends State<OtpOnboardingScreen> {
                         length: 6,
                         enabled: true,
                         onChanged:
-                            BlocProvider.of<OtpScreenCubit>(context).onType,
+                            BlocProvider.of<OtpViewCubit>(context).onType,
                       );
                     },
                   ),

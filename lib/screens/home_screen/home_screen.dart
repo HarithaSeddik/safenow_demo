@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:safenow_demo/config/image_constants.dart';
+import 'package:safenow_demo/constants/image_constants.dart';
 import 'package:safenow_demo/extensions/context_extensions.dart';
 import 'package:safenow_demo/screens/widgets/custom_page_scaffold.dart';
 import 'widgets/grid_item.dart';

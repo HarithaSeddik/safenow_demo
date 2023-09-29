@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:safenow_demo/screens/onboarding_screen/views/name_input_view/cubit/name_input_view_cubit.dart';
+import 'package:safenow_demo/screens/onboarding_screen/views/name_input_view/name_input_view.dart';
+import 'package:safenow_demo/screens/onboarding_screen/views/otp_view/cubit/otp_view_cubit.dart';
+import 'package:safenow_demo/screens/onboarding_screen/views/otp_view/otp_view.dart';
+import 'package:safenow_demo/screens/onboarding_screen/views/phone_input_view/cubit/phone_input_view_cubit.dart';
+import 'package:safenow_demo/screens/onboarding_screen/views/phone_input_view/phone_input_view.dart';
 import '../home_screen/home_screen.dart';
 import '../widgets/custom_page_scaffold.dart';
-import 'screens/email_onboarding_screen/cubit/email_onboarding_screen_cubit.dart';
-import 'screens/email_onboarding_screen/enter_email_onboarding_screen.dart';
-import 'screens/final_onboarding_screen.dart';
-import 'screens/name_onboarding_screen/cubit/name_onboarding_screen_cubit.dart';
-import 'screens/name_onboarding_screen/name_onboarding_screen.dart';
-import 'screens/otp_onboarding_screen/cubit/otp_screen_cubit.dart';
-import 'screens/otp_onboarding_screen/otp_onboarding_screen.dart';
-import 'screens/welcome_onboarding_screen.dart';
+import 'views/final_onboarding_view/final_onboarding_view.dart';
+import 'views/welcome_view/welcome_view.dart';
 
 class OnBoardingScreen extends StatefulWidget {
   const OnBoardingScreen({super.key});
@@ -43,13 +43,13 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         Expanded(
             child: MultiBlocProvider(
           providers: [
-            BlocProvider<NameOnboardingScreenCubit>(
-                create: (context) => NameOnboardingScreenCubit()),
-            BlocProvider<EmailOnboardingScreenCubit>(
-                create: (context) => EmailOnboardingScreenCubit()),
-            BlocProvider<OtpScreenCubit>(
+            BlocProvider<NameInputViewCubit>(
+                create: (context) => NameInputViewCubit()),
+            BlocProvider<PhoneInputViewCubit>(
+                create: (context) => PhoneInputViewCubit()),
+            BlocProvider<OtpViewCubit>(
               create: (context) =>
-                  OtpScreenCubitImpl(const Initial(), onSubmit: _goToNextPage),
+                  OtpViewCubitImpl(const Initial(), onSubmit: _goToNextPage),
             ),
           ],
           child: PageView(
@@ -65,13 +65,13 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   List<Widget> _onboardingContentList() => [
         PageScaffold(
-          scaffoldChild: WelcomeOnboardingScreen(onPressed: _goToNextPage),
+          scaffoldChild: WelcomeView(onPressed: _goToNextPage),
         ),
         PageScaffold(
           isPrimary: false,
           scaffoldChild: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
-            child: NameOnboardingScreen(
+            child: NameInputView(
               onPressed: _goToNextPage,
             ),
           ),
@@ -79,7 +79,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
         PageScaffold(
           scaffoldChild: SingleChildScrollView(
             physics: const BouncingScrollPhysics(),
-            child: EnterEmailOnboardingScreen(
+            child: PhoneInputView(
               onPressed: _goToNextPage,
             ),
           ),
@@ -89,12 +89,12 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
           isPrimary: false,
           scaffoldChild: SingleChildScrollView(
             physics: BouncingScrollPhysics(),
-            child: OtpOnboardingScreen(),
+            child: OtpView(),
           ),
         ),
         PageScaffold(
           isPrimary: false,
-          scaffoldChild: FinalOnboardingScreen(
+          scaffoldChild: FinalOnboardingView(
             onPressed: () => Navigator.push(
               context,
               MaterialPageRoute(

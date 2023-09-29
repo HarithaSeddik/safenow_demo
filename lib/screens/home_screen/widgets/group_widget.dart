@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:safenow_demo/config/theme_constants.dart';
+import 'package:safenow_demo/constants/theme_constants.dart';
 
 class GroupWidget extends StatelessWidget {
   const GroupWidget({super.key});

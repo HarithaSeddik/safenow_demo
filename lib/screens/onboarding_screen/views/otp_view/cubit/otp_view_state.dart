@@ -1,19 +1,19 @@
-part of 'otp_screen_cubit.dart';
+part of 'otp_view_cubit.dart';
 
-abstract class OtpScreenState extends Equatable {
+abstract class OtpViewState extends Equatable {
   final bool enableResend;
 
-  const OtpScreenState({this.enableResend = false});
+  const OtpViewState({this.enableResend = false});
 
   @override
   get props => [enableResend];
 }
 
-class Initial extends OtpScreenState {
+class Initial extends OtpViewState {
   const Initial({super.enableResend});
 }
 
-class Incorrect extends OtpScreenState {
+class Incorrect extends OtpViewState {
   final String remainingAttempts;
   final String remainingTime;
   final String remainingTimeUnit;
@@ -30,16 +30,16 @@ class Incorrect extends OtpScreenState {
       [...super.props, remainingAttempts, remainingTime, remainingTimeUnit];
 }
 
-class TooManyAttempts extends OtpScreenState {}
+class TooManyAttempts extends OtpViewState {}
 
-class TooManyRequests extends OtpScreenState {}
+class TooManyRequests extends OtpViewState {}
 
-class TimedOut extends OtpScreenState {
+class TimedOut extends OtpViewState {
   const TimedOut() : super(enableResend: true);
 }
 
-class Verified extends OtpScreenState {
+class Verified extends OtpViewState {
   const Verified() : super(enableResend: true);
 }
 
-class Loading extends OtpScreenState {}
+class Loading extends OtpViewState {}

@@ -1,10 +1,10 @@
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-part 'otp_screen_state.dart';
+part 'otp_view_state.dart';
 
 // abstraction over cubits helps with creating mock classes for testing
-abstract class OtpScreenCubit implements Cubit<OtpScreenState> {
+abstract class OtpViewCubit implements Cubit<OtpViewState> {
   void onType(String otp);
 
   void resendCode();
@@ -18,9 +18,8 @@ abstract class OtpScreenCubit implements Cubit<OtpScreenState> {
   void verified();
 }
 
-class OtpScreenCubitImpl extends Cubit<OtpScreenState>
-    implements OtpScreenCubit {
-  OtpScreenCubitImpl(super.initialState, {required this.onSubmit});
+class OtpViewCubitImpl extends Cubit<OtpViewState> implements OtpViewCubit {
+  OtpViewCubitImpl(super.initialState, {required this.onSubmit});
   final Function onSubmit;
   //TODO: implement submit otp
   void _submitOtp(String otp) async {

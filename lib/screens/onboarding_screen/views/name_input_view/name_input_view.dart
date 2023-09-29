@@ -5,17 +5,17 @@ import 'package:safenow_demo/extensions/context_extensions.dart';
 
 import '../../widgets/custom_text_field.dart';
 import '../../widgets/terms_of_service.dart';
-import 'cubit/name_onboarding_screen_cubit.dart';
+import 'cubit/name_input_view_cubit.dart';
 
-class NameOnboardingScreen extends StatefulWidget {
-  const NameOnboardingScreen({super.key, required this.onPressed});
+class NameInputView extends StatefulWidget {
+  const NameInputView({super.key, required this.onPressed});
   final Function() onPressed;
 
   @override
-  State<NameOnboardingScreen> createState() => _NameOnboardingScreenState();
+  State<NameInputView> createState() => _NameInputViewState();
 }
 
-class _NameOnboardingScreenState extends State<NameOnboardingScreen> {
+class _NameInputViewState extends State<NameInputView> {
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -37,13 +37,12 @@ class _NameOnboardingScreenState extends State<NameOnboardingScreen> {
           height: context.multiplierHeight(0.25),
           child: Column(
             children: [
-              BlocBuilder<NameOnboardingScreenCubit, NameOnboardingScreenState>(
+              BlocBuilder<NameInputViewCubit, NameInputViewState>(
                 builder: (context, state) {
                   return CustomTextField(
                     arrowEnabled: state.nextButtonEnabled,
-                    onChanged:
-                        BlocProvider.of<NameOnboardingScreenCubit>(context)
-                            .textFieldOnChanged,
+                    onChanged: BlocProvider.of<NameInputViewCubit>(context)
+                        .textFieldOnChanged,
                     textFieldLabel: 'First name',
                     onArrowPressed: widget.onPressed,
                   );
