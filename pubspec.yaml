@@ -17,12 +17,24 @@ dependencies:
   cupertino_icons: ^1.0.2
   email_validator: ^2.1.17
   pin_code_fields: ^8.0.1
+  flutter_native_splash: ^2.3.2
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
   flutter_lints: ^2.0.0
+
+flutter_native_splash:
+  color: "#FFFF00"
+  color_dark: "#FFFF00"
+  background_image: "assets/splash/splash_screen.png"
+  image: "assets/splash/splash_screen.png"
+  image_dark: assets/splash/splash_screen.png
+  ios: true
+  ios_content_mode: scaleToFill
+  android: true
+  android_gravity: fill
 
 flutter:
   uses-material-design: true
@@ -37,8 +49,8 @@ flutter:
         - asset: assets/fonts/LinikSans/LinikSans-Thin.ttf
   assets:
     - assets/images/
-    - assets/icons/
     - assets/logos/
+    - assets/splash/
 
   # To add assets to your application, add an assets section, like this:
   # assets:
