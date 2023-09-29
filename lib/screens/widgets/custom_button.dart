@@ -38,6 +38,7 @@ class CustomButton extends StatelessWidget {
             child: Text(
               buttonText,
               style: TextStyle(
+                letterSpacing: 0.25,
                 color: isPrimary
                     ? Colors.white
                     : ThemeConstants.secondaryTextColor,
