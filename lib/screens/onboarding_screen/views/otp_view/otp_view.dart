@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
-import 'package:safenow_demo/constants/theme_constants.dart';
-import 'package:safenow_demo/extensions/context_extensions.dart';
+import 'package:safenow_demo/utils/constants/theme_constants.dart';
+import 'package:safenow_demo/utils/extensions/context_extensions.dart';
 import 'package:safenow_demo/screens/onboarding_screen/views/phone_input_view/cubit/phone_input_view_cubit.dart';
 import 'cubit/otp_view_cubit.dart';
 

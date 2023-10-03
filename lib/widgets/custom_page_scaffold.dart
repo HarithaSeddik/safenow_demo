@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:safenow_demo/constants/image_constants.dart';
-import 'package:safenow_demo/constants/theme_constants.dart';
-import 'package:safenow_demo/extensions/context_extensions.dart';
+import 'package:safenow_demo/utils/constants/image_constants.dart';
+import 'package:safenow_demo/utils/constants/theme_constants.dart';
+import 'package:safenow_demo/utils/extensions/context_extensions.dart';
 
 //  A custom page scaffold acts like a higher order component, or a wrapper for the Scaffold widget,  this helps us by keeping the code clean, and avoid repetitive code
 class PageScaffold extends StatelessWidget {

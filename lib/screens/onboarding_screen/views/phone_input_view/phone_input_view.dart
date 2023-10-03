@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:safenow_demo/constants/theme_constants.dart';
+import 'package:safenow_demo/utils/constants/theme_constants.dart';
 
-import 'package:safenow_demo/extensions/context_extensions.dart';
+import 'package:safenow_demo/utils/extensions/context_extensions.dart';
 import 'package:safenow_demo/screens/onboarding_screen/views/name_input_view/cubit/name_input_view_cubit.dart';
-import '../../widgets/custom_text_field.dart';
+import '../../../../widgets/custom_text_field.dart';
 import 'cubit/phone_input_view_cubit.dart';
 
 class PhoneInputView extends StatefulWidget {

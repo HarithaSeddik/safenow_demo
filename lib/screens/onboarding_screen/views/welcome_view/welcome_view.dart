@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:safenow_demo/constants/image_constants.dart';
-import 'package:safenow_demo/extensions/context_extensions.dart';
-import '../../../widgets/custom_button.dart';
+import 'package:safenow_demo/utils/constants/image_constants.dart';
+import 'package:safenow_demo/utils/extensions/context_extensions.dart';
+import '../../../../widgets/custom_button.dart';
 
 class WelcomeView extends StatelessWidget {
   const WelcomeView({super.key, required this.onPressed});

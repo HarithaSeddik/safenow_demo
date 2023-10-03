@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:safenow_demo/constants/theme_constants.dart';
+import 'package:safenow_demo/utils/constants/theme_constants.dart';
 
 // Custom button widget, a HOC wrapper for the typical
 // flutter button but with extra functionalities

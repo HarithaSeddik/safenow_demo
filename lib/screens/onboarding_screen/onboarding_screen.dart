@@ -7,7 +7,7 @@ import 'package:safenow_demo/screens/onboarding_screen/views/otp_view/otp_view.d
 import 'package:safenow_demo/screens/onboarding_screen/views/phone_input_view/cubit/phone_input_view_cubit.dart';
 import 'package:safenow_demo/screens/onboarding_screen/views/phone_input_view/phone_input_view.dart';
 import '../home_screen/home_screen.dart';
-import '../widgets/custom_page_scaffold.dart';
+import '../../widgets/custom_page_scaffold.dart';
 import 'views/final_onboarding_view/final_onboarding_view.dart';
 import 'views/welcome_view/welcome_view.dart';
 

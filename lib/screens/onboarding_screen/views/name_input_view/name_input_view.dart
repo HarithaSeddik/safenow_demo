@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:safenow_demo/extensions/context_extensions.dart';
+import 'package:safenow_demo/utils/extensions/context_extensions.dart';
 
-import '../../widgets/custom_text_field.dart';
+import '../../../../widgets/custom_text_field.dart';
 import '../../widgets/terms_of_service.dart';
 import 'cubit/name_input_view_cubit.dart';
 

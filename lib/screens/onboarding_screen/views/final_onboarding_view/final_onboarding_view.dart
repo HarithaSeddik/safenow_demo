@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:safenow_demo/constants/theme_constants.dart';
-import '../../../widgets/custom_button.dart';
+import 'package:safenow_demo/utils/constants/theme_constants.dart';
+import '../../../../widgets/custom_button.dart';
 
 class FinalOnboardingView extends StatelessWidget {
   const FinalOnboardingView({super.key, required this.onPressed});

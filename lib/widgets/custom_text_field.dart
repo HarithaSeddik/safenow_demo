@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:safenow_demo/constants/theme_constants.dart';
-import 'package:safenow_demo/extensions/context_extensions.dart';
+import 'package:safenow_demo/utils/constants/theme_constants.dart';
+import 'package:safenow_demo/utils/extensions/context_extensions.dart';
 
 class CustomTextField extends StatefulWidget {
   const CustomTextField({
