@@ -38,28 +38,23 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        Expanded(
-            child: MultiBlocProvider(
-          providers: [
-            BlocProvider<NameInputViewCubit>(
-                create: (context) => NameInputViewCubit()),
-            BlocProvider<PhoneInputViewCubit>(
-                create: (context) => PhoneInputViewCubit()),
-            BlocProvider<OtpViewCubit>(
-              create: (context) =>
-                  OtpViewCubitImpl(const Initial(), onSubmit: _goToNextPage),
-            ),
-          ],
-          child: PageView(
-              allowImplicitScrolling: false,
-              physics:
-                  const NeverScrollableScrollPhysics(), // navigation only through buttons
-              controller: _pageController,
-              children: _onboardingContentList()),
-        ))
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider<NameInputViewCubit>(
+            create: (context) => NameInputViewCubit()),
+        BlocProvider<PhoneInputViewCubit>(
+            create: (context) => PhoneInputViewCubit()),
+        BlocProvider<OtpViewCubit>(
+          create: (context) =>
+              OtpViewCubitImpl(const Initial(), onSubmit: _goToNextPage),
+        ),
       ],
+      child: PageView(
+          allowImplicitScrolling: false,
+          physics:
+              const NeverScrollableScrollPhysics(), // navigation only through buttons
+          controller: _pageController,
+          children: _onboardingContentList()),
     );
   }
 
