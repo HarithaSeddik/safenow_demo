@@ -11,6 +11,7 @@ class PageScaffold extends StatelessWidget {
   final bool resizeToAvoidBottomInset;
   final EdgeInsets padding;
   final bool withDrawer;
+  final bool withBackNavigation;
 
   const PageScaffold({
     super.key,
@@ -19,6 +20,7 @@ class PageScaffold extends StatelessWidget {
     this.resizeToAvoidBottomInset = true,
     this.padding = const EdgeInsets.symmetric(vertical: 80, horizontal: 20),
     this.withDrawer = false,
+    this.withBackNavigation = false,
   });
 
   @override
@@ -28,6 +30,7 @@ class PageScaffold extends StatelessWidget {
       child: Scaffold(
         extendBodyBehindAppBar: true,
         appBar: AppBar(
+          scrolledUnderElevation: 0,
           iconTheme: const IconThemeData(
             size: 35,
           ),
@@ -35,7 +38,7 @@ class PageScaffold extends StatelessWidget {
           systemOverlayStyle: isPrimary
               ? SystemUiOverlayStyle.dark
               : SystemUiOverlayStyle.light,
-          automaticallyImplyLeading: false,
+          automaticallyImplyLeading: withBackNavigation,
         ),
         endDrawer: withDrawer ? const NavDrawer() : null,
         resizeToAvoidBottomInset: resizeToAvoidBottomInset,
