@@ -1,3 +1,4 @@
+// Dart class for preparing the GraphQL query fields, or fragments
 class CountryFields {
   static const String fullFieldsCountryFields = '''
       code

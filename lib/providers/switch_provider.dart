@@ -1,13 +1,14 @@
-import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-final switchStateNotifier = ChangeNotifierProvider((ref) => SwitchState());
+final switchStateProvider = StateNotifierProvider<SwitchStateNotifier, bool>(
+    (ref) => SwitchStateNotifier(false));
 
-class SwitchState extends ChangeNotifier {
+class SwitchStateNotifier extends StateNotifier<bool> {
   bool switchValue = false;
 
+  SwitchStateNotifier(super.state);
+
   void toggleSwitchValue() {
-    switchValue = !switchValue;
-    notifyListeners();
+    state = !state;
   }
 }

@@ -10,9 +10,10 @@ class CustomSwitchWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final switchState = ref.watch(switchStateNotifier);
+    final switchState = ref.watch(switchStateProvider);
+    print("switchState from switch widget: $switchState");
     return FlutterSwitch(
-      value: switchState.switchValue,
+      value: switchState,
       activeText: "Show less.. ",
       inactiveText: "Show More!",
       activeColor: ThemeConstants.primaryButtonColor,
@@ -31,7 +32,7 @@ class CustomSwitchWidget extends ConsumerWidget {
       borderRadius: 50.0,
       showOnOff: true,
       onToggle: (val) {
-        switchState.toggleSwitchValue();
+        ref.read(switchStateProvider.notifier).toggleSwitchValue();
       },
       duration: const Duration(milliseconds: 200),
     );
