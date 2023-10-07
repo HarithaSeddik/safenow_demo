@@ -11,7 +11,7 @@ class CountryListWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: context.multiplierWidth(0.8),
-      height: context.multiplierHeight(0.50),
+      height: context.multiplierHeight(0.60),
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30),
         color: ThemeConstants.secondaryColor,
@@ -30,7 +30,7 @@ class CountryListWidget extends StatelessWidget {
                     //User Navigator to push detail screen route
                     onTap: () => Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => CountryDetailsScreen(
-                            countryModel: countries[index]))),
+                            prevCountryModel: countries[index]))),
                     child: Card(
                       color: ThemeConstants.primaryColor,
                       elevation: 4,

@@ -34,16 +34,20 @@ class GraphQLDataService implements DataService {
   @override
   Future<Either<Error, Map<String, dynamic>?>> getCountryByCode(
       String code) async {
-    final response = await _client.query(QueryOptions(
-      document: gql(
-        GraphQLQueries.getCountryByCode(code),
-      ),
-    ));
-    if (response.hasException) {
-      print(
-          "Error while calling getCountryByCode GraphQL query: ${response.exception.toString()}");
+    debugPrint("now running GraphQL query to get country by code");
+    try {
+      final response = await _client.query(QueryOptions(
+        document: GraphQLQueries.getCountryByCode(code),
+      ));
+      if (response.hasException) {
+        print(
+            "Error while calling getCountryByCode GraphQL query: ${response.exception.toString()}");
+        return Left(Error());
+      }
+      return Right(response.data);
+    } catch (e) {
+      print("Error while calling getCountryByCode GraphQL query: $e");
       return Left(Error());
     }
-    return Right(response.data);
   }
 }

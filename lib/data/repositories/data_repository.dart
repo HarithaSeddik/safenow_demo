@@ -6,13 +6,11 @@ import 'package:safenow_demo/models/country_model.dart';
 abstract class DataRepository {
   Future<List<CountryModel>> getCountries();
   Future<CountryModel?> getCountryByCode(String code);
-  CountryModel parseCountryData(Map<String, dynamic> data);
 }
 
 // Repository Implementation
 class DataRepositoryImpl implements DataRepository {
   final DataService _dataService;
-
   DataRepositoryImpl(this._dataService);
 
   @override
@@ -25,8 +23,7 @@ class DataRepositoryImpl implements DataRepository {
         debugPrint(
             "'getCountries graphQL query returned some data.. now parsing");
         final countries = _parseCountriesData(data);
-        debugPrint(
-            "successfully parsed list of countries: ${countries.map((e) => e.name).join(" , ")}");
+        debugPrint("successfully parsed list of countries");
         return countries;
       },
     );
@@ -41,20 +38,23 @@ class DataRepositoryImpl implements DataRepository {
       (data) {
         debugPrint(
             "'getCountryByCode graphQL query returned some data.. now parsing");
-        final country = parseCountryData(data);
-        debugPrint("successfully parsed country: ${country.name}");
-        return country;
+        final country = _parseCountryData(data);
+        return country ?? country;
       },
     );
   }
 
-  @override
-  CountryModel parseCountryData(Map<String, dynamic> data) {
+  CountryModel? _parseCountryData(Map<String, dynamic> data) {
     // Extract the countries List from the Map
-    Map<String, dynamic> countryData =
-        data['country'].cast<Map<String, dynamic>>();
-    final country = CountryModel.fromJson(countryData);
-    return country;
+    try {
+      Map<String, dynamic> countryData = data['country'];
+      final country = CountryModel.fromJson(countryData);
+      print("country: ${country.name}");
+      return country;
+    } catch (e) {
+      print("Error while parsing data: $e");
+      return null;
+    }
   }
 
   List<CountryModel> _parseCountriesData(Map<String, dynamic> data) {

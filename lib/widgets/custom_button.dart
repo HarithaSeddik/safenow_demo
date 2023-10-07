@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:safenow_demo/utils/constants/theme_constants.dart';
+import 'package:safenow_demo/utils/extensions/context_extensions.dart';
 
 // Custom button widget, a HOC wrapper for the typical
 // flutter button but with extra functionalities
@@ -11,20 +12,22 @@ class CustomButton extends StatelessWidget {
     required this.onPressed,
     this.isDisabled = false,
     this.margins = const EdgeInsets.symmetric(horizontal: 30),
+    this.width,
   }) : super(key: key);
   final bool isPrimary;
   final String buttonText;
   final void Function() onPressed;
   final bool isDisabled;
   final EdgeInsets margins;
+  final double? width;
   @override
   Widget build(BuildContext context) {
     return Opacity(
       opacity: isDisabled ? 0.5 : 1,
       child: Container(
         margin: margins,
-        height: 56,
-        width: double.infinity,
+        height: context.multiplierHeight(0.065),
+        width: width ?? double.infinity,
         child: ElevatedButton(
           onPressed: () => isDisabled ? null : onPressed.call(),
           style: ElevatedButton.styleFrom(

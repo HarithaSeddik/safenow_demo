@@ -1,23 +1,22 @@
 class CountryFields {
   static const String fullFieldsCountryFields = '''
-    fragment CountryFields on Country {
+      code
+      name
+      emoji
       awsRegion
       capital
-      code
       continent {
         code
         name
       }
       currency
-      emoji
       languages {
         code
         name
       }
-      name
       native
       phone
-    }
+
   ''';
   static const String shortDisplayCountryFragment = '''
     fragment CountryFields on Country {

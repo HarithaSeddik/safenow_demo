@@ -21,6 +21,7 @@ dependencies:
   either_option: ^2.0.0
   graphql_flutter: ^5.1.2
   flutter_riverpod: ^2.4.2
+  flutter_switch: ^0.3.2
 
 dev_dependencies:
   flutter_test:
