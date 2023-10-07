@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 // Entry point for the shared data
 /// Provider that maps an [DataService] interface to implementation
 final serviceProvider = Provider<DataService>((ref) {
-  //Also known as decorator pattern, hiding the implementation class from the public
+  //Also known as the decorator pattern, hiding the implementation class from the
+  //public while exposing the abstract interface class
   return GraphQLDataService(GraphQLHelper.client);
 });

@@ -23,6 +23,7 @@ class _PhoneInputViewState extends State<PhoneInputView> {
   final String _bodyText =
       "To make sure that you are a real person, please enter your phone number here: ";
   final String _detailText = "Why do you need my phone number? ";
+  final String _phoneTextLabel = "Phone";
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -70,7 +71,7 @@ class _PhoneInputViewState extends State<PhoneInputView> {
                 arrowEnabled: state.nextButtonEnabled,
                 onChanged: BlocProvider.of<PhoneInputViewCubit>(context)
                     .textFieldOnChanged,
-                textFieldLabel: 'Phone',
+                textFieldLabel: _phoneTextLabel,
                 onArrowPressed: widget.onPressed,
                 isPhoneField: true,
               );

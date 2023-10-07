@@ -31,6 +31,7 @@ class CountryListWidget extends StatelessWidget {
                     onTap: () => Navigator.of(context).push(MaterialPageRoute(
                         builder: (context) => CountryDetailsScreen(
                             prevCountryModel: countries[index]))),
+                    // Use Card/ListTile widgets for out-of-the-box container styling
                     child: Card(
                       color: ThemeConstants.primaryColor,
                       elevation: 4,

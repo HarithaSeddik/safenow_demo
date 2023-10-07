@@ -5,6 +5,10 @@ import '../../../../widgets/custom_button.dart';
 class FinalOnboardingView extends StatelessWidget {
   const FinalOnboardingView({super.key, required this.onPressed});
   final Function() onPressed;
+
+  final String _titleText =
+      "Great, your phone number has been successfully verified.";
+  final String _buttonText = "Let's start";
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -31,8 +35,8 @@ class FinalOnboardingView extends StatelessWidget {
         ),
         Container(
           margin: const EdgeInsets.symmetric(horizontal: 30),
-          child: const Text(
-            "Great, your phone number has been successfully verified.",
+          child: Text(
+            _titleText,
             style: ThemeConstants.titleLargeStyle,
             textAlign: TextAlign.center,
           ),
@@ -40,7 +44,7 @@ class FinalOnboardingView extends StatelessWidget {
         const Spacer(),
         CustomButton(
           isPrimary: false,
-          buttonText: "Let's start",
+          buttonText: _buttonText,
           onPressed: onPressed,
         )
       ],

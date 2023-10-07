@@ -16,6 +16,9 @@ class NameInputView extends StatefulWidget {
 }
 
 class _NameInputViewState extends State<NameInputView> {
+  final String _titleText = "Let's get started. \n What's your name?";
+  final String _firstNameString = "First name";
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -27,7 +30,7 @@ class _NameInputViewState extends State<NameInputView> {
             margin: const EdgeInsets.only(top: 120),
             width: context.dynamicWidth(200),
             child: Text(
-              "Let's get started. \n What's your name?",
+              _titleText,
               style: Theme.of(context).textTheme.titleMedium,
               textAlign: TextAlign.center,
             ),
@@ -45,7 +48,7 @@ class _NameInputViewState extends State<NameInputView> {
                       arrowEnabled: state.nextButtonEnabled,
                       onChanged: BlocProvider.of<NameInputViewCubit>(context)
                           .textFieldOnChanged,
-                      textFieldLabel: 'First name',
+                      textFieldLabel: _firstNameString,
                       onArrowPressed: widget.onPressed,
                     );
                   },

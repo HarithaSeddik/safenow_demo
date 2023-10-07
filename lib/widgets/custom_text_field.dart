@@ -32,6 +32,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
 
   @override
   void dispose() {
+    // always dispose controllers to avoid memory leaks
     _controller.dispose();
     super.dispose();
   }
@@ -81,6 +82,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
                   onTap: widget.arrowEnabled
                       ? () => {
                             widget.onArrowPressed.call(),
+                            // Upon next arrow pressed, we utilize focus manager to 'pop' or unfocus the keyboard on screen
                             FocusManager.instance.primaryFocus?.unfocus(),
                           }
                       : () {},

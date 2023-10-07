@@ -12,6 +12,8 @@ class PageScaffold extends StatelessWidget {
   final EdgeInsets padding;
   final bool withDrawer;
   final bool withBackNavigation;
+  final bool withBgImage;
+  final bool withBgImageOpacity;
 
   const PageScaffold({
     super.key,
@@ -21,6 +23,8 @@ class PageScaffold extends StatelessWidget {
     this.padding = const EdgeInsets.symmetric(vertical: 80, horizontal: 20),
     this.withDrawer = false,
     this.withBackNavigation = false,
+    this.withBgImage = false,
+    this.withBgImageOpacity = false,
   });
 
   @override
@@ -44,9 +48,26 @@ class PageScaffold extends StatelessWidget {
         resizeToAvoidBottomInset: resizeToAvoidBottomInset,
         body: Container(
           padding: padding,
-          color: isPrimary
-              ? ThemeConstants.primaryColor
-              : ThemeConstants.secondaryColor,
+          height: withBgImage ? context.multiplierHeight(1) : null,
+          decoration: withBgImage
+              ? BoxDecoration(
+                  image: DecorationImage(
+                    alignment: Alignment.bottomCenter,
+                    image: const AssetImage(
+                      ImageConstants.homeScreenMapOverlay,
+                    ),
+                    fit: BoxFit.cover,
+                    opacity: withBgImageOpacity ? 0.3 : 1,
+                  ),
+                  color: isPrimary
+                      ? ThemeConstants.primaryColor
+                      : ThemeConstants.secondaryColor,
+                )
+              : BoxDecoration(
+                  color: isPrimary
+                      ? ThemeConstants.primaryColor
+                      : ThemeConstants.secondaryColor,
+                ),
           child: Center(
             child: scaffoldChild,
           ),
@@ -59,6 +80,12 @@ class PageScaffold extends StatelessWidget {
 class NavDrawer extends StatelessWidget {
   const NavDrawer({super.key});
 
+  final String _drawerTitle = 'Discover SafeNow';
+  final String _listTileText1 = 'My Groups';
+  final String _listTileText2 = 'Settings';
+  final String _listTileText3 = 'Alarm History';
+  final String _listTileText4 = 'FAQ & Help';
+  final String _listTileText5 = 'Test Mode';
   @override
   Widget build(BuildContext context) {
     return Drawer(
@@ -90,14 +117,14 @@ class NavDrawer extends StatelessWidget {
                 ),
                 Container(
                   margin: const EdgeInsets.symmetric(horizontal: 20),
-                  child: const Row(
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       Text(
-                        'Discover SafeNow',
+                        _drawerTitle,
                         style: ThemeConstants.drawerSmallTextBold,
                       ),
-                      Icon(Icons.keyboard_arrow_down),
+                      const Icon(Icons.keyboard_arrow_down),
                     ],
                   ),
                 )
@@ -108,30 +135,30 @@ class NavDrawer extends StatelessWidget {
             leading: const Icon(
               Icons.groups_outlined,
             ),
-            title: const Text(
-              'My Groups',
+            title: Text(
+              _listTileText1,
               style: ThemeConstants.drawerMediumText,
             ),
             onTap: () => {},
           ),
           ListTile(
             leading: const Icon(Icons.settings_outlined),
-            title: const Text('Settings'),
+            title: Text(_listTileText2),
             onTap: () => {Navigator.of(context).pop()},
           ),
           ListTile(
             leading: const Icon(Icons.access_alarm),
-            title: const Text('Alarm History'),
+            title: Text(_listTileText3),
             onTap: () => {Navigator.of(context).pop()},
           ),
           ListTile(
             leading: const Icon(Icons.question_answer_outlined),
-            title: const Text('FAQ & Help'),
+            title: Text(_listTileText4),
             onTap: () => {Navigator.of(context).pop()},
           ),
           ListTile(
             leading: const Icon(Icons.videogame_asset_outlined),
-            title: const Text('Test Mode'),
+            title: Text(_listTileText5),
             onTap: () => {Navigator.of(context).pop()},
           ),
         ],

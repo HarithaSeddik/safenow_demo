@@ -6,6 +6,8 @@ import '../../../../widgets/custom_button.dart';
 class WelcomeView extends StatelessWidget {
   const WelcomeView({super.key, required this.onPressed});
   final Function() onPressed;
+  final String _titleText = "Welcome to SafeNow";
+  final String _buttonText = "Let's go";
   @override
   Widget build(BuildContext context) {
     return Column(
@@ -15,7 +17,7 @@ class WelcomeView extends StatelessWidget {
         Container(
           margin: const EdgeInsets.symmetric(horizontal: 30),
           child: Text(
-            "Welcome to SafeNow",
+            _titleText,
             style: Theme.of(context).textTheme.headlineMedium,
             textAlign: TextAlign.center,
           ),
@@ -31,7 +33,7 @@ class WelcomeView extends StatelessWidget {
         const Spacer(),
         CustomButton(
           isPrimary: true,
-          buttonText: "Let's go",
+          buttonText: _buttonText,
           onPressed: onPressed,
         )
       ],

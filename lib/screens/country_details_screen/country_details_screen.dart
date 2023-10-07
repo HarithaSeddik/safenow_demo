@@ -19,6 +19,8 @@ class CountryDetailsScreen extends ConsumerWidget {
     final switchState = ref.watch(switchStateNotifier);
 
     return PageScaffold(
+      withBgImage: true,
+      withBgImageOpacity: true,
       withBackNavigation: true,
       padding: const EdgeInsets.only(top: 100, bottom: 50, left: 20, right: 20),
       scaffoldChild: Column(

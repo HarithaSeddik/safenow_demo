@@ -20,7 +20,7 @@ class _OtpViewState extends State<OtpView> {
   final String _textPrompt = "Please enter the verification code we sent you.";
 
   final String _detailText = "Did not receive code? Resend";
-
+  final String _loadingText = "Code is being verified...";
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -28,18 +28,18 @@ class _OtpViewState extends State<OtpView> {
       child: BlocBuilder<OtpViewCubit, OtpViewState>(
         builder: (context, state) {
           return state is Loading
-              ? const Center(
+              ? Center(
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      CircularProgressIndicator(
+                      const CircularProgressIndicator(
                         color: Colors.white,
                       ),
-                      SizedBox(
+                      const SizedBox(
                         height: 15,
                       ),
                       Text(
-                        "Code is being verified...",
+                        _loadingText,
                         style: ThemeConstants.titleMediumStyle,
                       )
                     ],

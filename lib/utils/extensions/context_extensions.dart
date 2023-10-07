@@ -4,9 +4,10 @@ extension ContextExtension on BuildContext {
   MediaQueryData get mediaQuery => MediaQuery.of(this);
 }
 
+// This MediaQueryExtension helps us minimize repetitive code
+// In this scenario we use these helper methods to provide assistance when designing responsive UIs
 extension MediaQueryExtension on BuildContext {
-  double get height => mediaQuery.size.height;
-  double get width => mediaQuery.size.width;
+  // Phone screen size I typically use with my Figma designs
   double get sampleScreenHeight => 812; //pixels
   double get sampleScreenWidth => 375; //pixels
 

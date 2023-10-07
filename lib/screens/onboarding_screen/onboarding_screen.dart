@@ -58,6 +58,7 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
     );
   }
 
+  //Widget list 'views' to be rendered by PageView
   List<Widget> _onboardingContentList() => [
         PageScaffold(
           scaffoldChild: WelcomeView(onPressed: _goToNextPage),

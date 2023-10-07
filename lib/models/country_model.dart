@@ -1,3 +1,4 @@
+//Dart model class to make UI-ready Dart objects from JSON data
 class CountryModel {
   final String? awsRegion;
   final String? capital;
@@ -22,7 +23,7 @@ class CountryModel {
     this.native,
     this.phone,
   });
-
+  //Factory constructor design works well with handling data from/to JSON format
   factory CountryModel.fromJson(Map<String, dynamic> json) {
     return CountryModel(
       awsRegion: json['awsRegion'],
