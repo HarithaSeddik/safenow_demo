@@ -8,7 +8,7 @@ abstract class DataRepository {
   Future<CountryModel?> getCountryByCode(String code);
 }
 
-// Repository Implementation
+// Repository 'concrete' Implementation class
 class DataRepositoryImpl implements DataRepository {
   final DataService _dataService;
   DataRepositoryImpl(this._dataService);

@@ -12,6 +12,7 @@ void main() async {
       statusBarColor: Colors.transparent,
     ),
   );
+  GraphQLHelper.init();
   runApp(const ProviderScope(child: MyApp()));
 }
 
@@ -20,8 +21,6 @@ class MyApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    GraphQLHelper.init();
-
     return MaterialApp(
       // use custom text, color themes
       theme: ThemeData(

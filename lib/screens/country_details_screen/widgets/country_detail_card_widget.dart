@@ -13,11 +13,12 @@ class CountryDetailCardWidget extends StatelessWidget {
   final bool isVisible;
   @override
   Widget build(BuildContext context) {
+    //Simple animations
     return AnimatedOpacity(
       opacity: isVisible ? 1 : 0,
       duration: const Duration(milliseconds: 500),
       child: AnimatedContainer(
-        duration: Duration(milliseconds: 500),
+        duration: const Duration(milliseconds: 500),
         height: isVisible ? 80 : 0,
         child: Card(
           color: ThemeConstants.primaryColor,

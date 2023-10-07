@@ -12,6 +12,12 @@ class CountryDetailsContainer extends StatelessWidget {
   });
   final CountryModel country;
   final bool isExpanded;
+  final String _subtitleCapital = 'Capital';
+  final String _subtitleLanguages = 'Languages';
+  final String _subtitleContinent = 'Continent';
+  final String _subtitleNative = 'Native';
+  final String _subtitlePhone = 'Phone';
+  final String _subtitleCurrency = 'Currency';
 
   @override
   Widget build(BuildContext context) {
@@ -38,30 +44,30 @@ class CountryDetailsContainer extends StatelessWidget {
                 children: [
                   CountryDetailCardWidget(
                     titleText: country.capital ?? '',
-                    subTitleText: "Capital",
+                    subTitleText: _subtitleCapital,
                   ),
                   CountryDetailCardWidget(
                     titleText:
                         country.languages?.map((e) => e.name).join(" , ") ?? '',
-                    subTitleText: "Languages",
+                    subTitleText: _subtitleLanguages,
                   ),
                   CountryDetailCardWidget(
                     titleText: country.continent?.name ?? '',
-                    subTitleText: "Continent",
+                    subTitleText: _subtitleContinent,
                   ),
                   CountryDetailCardWidget(
                     titleText: country.native ?? '',
-                    subTitleText: "Native",
+                    subTitleText: _subtitleNative,
                     isVisible: isExpanded,
                   ),
                   CountryDetailCardWidget(
                     titleText: "+(${country.phone}) ",
-                    subTitleText: "Phone",
+                    subTitleText: _subtitlePhone,
                     isVisible: isExpanded,
                   ),
                   CountryDetailCardWidget(
                     titleText: country.currency ?? '',
-                    subTitleText: "Currency",
+                    subTitleText: _subtitleCurrency,
                     isVisible: isExpanded,
                   )
                 ],
