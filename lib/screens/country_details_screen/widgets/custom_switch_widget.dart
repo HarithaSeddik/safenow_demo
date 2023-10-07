@@ -7,15 +7,15 @@ import 'package:safenow_demo/utils/extensions/context_extensions.dart';
 
 class CustomSwitchWidget extends ConsumerWidget {
   const CustomSwitchWidget({super.key});
-
+  final String _activeText = "Show less... ";
+  final String _inactiveText = "Show More!";
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final switchState = ref.watch(switchStateProvider);
-    print("switchState from switch widget: $switchState");
+    final switchValue = ref.watch(switchStateProvider);
     return FlutterSwitch(
-      value: switchState,
-      activeText: "Show less.. ",
-      inactiveText: "Show More!",
+      value: switchValue,
+      activeText: _activeText,
+      inactiveText: _inactiveText,
       activeColor: ThemeConstants.primaryButtonColor,
       inactiveColor: ThemeConstants.secondaryButtonColor,
       activeToggleColor: ThemeConstants.primaryColor,
@@ -32,7 +32,8 @@ class CustomSwitchWidget extends ConsumerWidget {
       borderRadius: 50.0,
       showOnOff: true,
       onToggle: (val) {
-        ref.read(switchStateProvider.notifier).toggleSwitchValue();
+        //Inside onChange or onToggle callbacks, use the read method of a provider to not constantly listen to state changes for efficiency
+        ref.read(switchStateProvider.notifier).state = !switchValue;
       },
       duration: const Duration(milliseconds: 200),
     );

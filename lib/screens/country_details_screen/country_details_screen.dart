@@ -16,7 +16,7 @@ class CountryDetailsScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final countryModelVal =
         ref.watch(getCountryByCodeDataProvider(prevCountryModel.code));
-    final switchState = ref.watch(switchStateProvider);
+    final switchValue = ref.watch(switchStateProvider);
 
     return PageScaffold(
       withBgImage: true,
@@ -63,7 +63,7 @@ class CountryDetailsScreen extends ConsumerWidget {
             data: (data) => data != null
                 ? CountryDetailsContainer(
                     country: data,
-                    isExpanded: switchState,
+                    isExpanded: switchValue,
                   )
                 : Container(),
             error: (err, s) => Text(err.toString()),
