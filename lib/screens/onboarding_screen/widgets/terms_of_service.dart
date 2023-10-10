@@ -1,55 +1,49 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:safenow_demo/providers/onboarding_screen_providers.dart';
 import 'package:safenow_demo/utils/constants/theme_constants.dart';
 import 'package:safenow_demo/utils/extensions/context_extensions.dart';
-import 'package:safenow_demo/screens/onboarding_screen/views/name_input_view/cubit/name_input_view_cubit.dart';
 
-class TermsOfService extends StatefulWidget {
+class TermsOfService extends ConsumerWidget {
   const TermsOfService({super.key});
 
-  @override
-  State<TermsOfService> createState() => _TermsOfServiceState();
-}
-
-class _TermsOfServiceState extends State<TermsOfService> {
   final String _termsOfService = "Terms Of Service";
+
   final String _privacyPolicy = "Privacy Policy.";
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final bool termsOfServiceState =
+        ref.watch(nameInputViewProvider).termsOfServiceAreAccepted;
     return SizedBox(
       width: context.multiplierWidth(0.83),
       child: Flex(
         direction: Axis.horizontal,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          BlocBuilder<NameInputViewCubit, NameInputViewState>(
-            builder: (context, state) {
-              return Center(
-                  child: InkWell(
-                onTap: () => BlocProvider.of<NameInputViewCubit>(context)
-                    .toggleTermsOfService(),
-                child: Container(
-                  decoration: const BoxDecoration(
-                      shape: BoxShape.circle,
-                      color: ThemeConstants.primaryColor),
-                  child: Padding(
-                    padding: const EdgeInsets.all(0),
-                    child: state.termsOfServiceAreAccepted
-                        ? const Icon(
-                            Icons.check,
-                            size: 18.0,
-                            color: ThemeConstants.secondaryColor,
-                          )
-                        : const Icon(
-                            Icons.check_box_outline_blank,
-                            size: 18.0,
-                            color: ThemeConstants.primaryColor,
-                          ),
-                  ),
-                ),
-              ));
-            },
-          ),
+          Center(
+              child: InkWell(
+            onTap: () =>
+                ref.read(nameInputViewProvider.notifier).toggleTermsOfService(),
+            child: Container(
+              decoration: const BoxDecoration(
+                  shape: BoxShape.circle, color: ThemeConstants.primaryColor),
+              child: Padding(
+                padding: const EdgeInsets.all(0),
+                child: termsOfServiceState
+                    ? const Icon(
+                        Icons.check,
+                        size: 18.0,
+                        color: ThemeConstants.secondaryColor,
+                      )
+                    : const Icon(
+                        Icons.check_box_outline_blank,
+                        size: 18.0,
+                        color: ThemeConstants.primaryColor,
+                      ),
+              ),
+            ),
+          )),
           Expanded(
             child: Container(
               padding: const EdgeInsets.only(left: 12),

@@ -1,28 +1,29 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:safenow_demo/screens/onboarding_screen/views/name_input_view/cubit/name_input_view_cubit.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:safenow_demo/providers/onboarding_screen_providers.dart';
 import 'package:safenow_demo/screens/onboarding_screen/views/name_input_view/name_input_view.dart';
-import 'package:safenow_demo/screens/onboarding_screen/views/otp_view/cubit/otp_view_cubit.dart';
 import 'package:safenow_demo/screens/onboarding_screen/views/otp_view/otp_view.dart';
-import 'package:safenow_demo/screens/onboarding_screen/views/phone_input_view/cubit/phone_input_view_cubit.dart';
 import 'package:safenow_demo/screens/onboarding_screen/views/phone_input_view/phone_input_view.dart';
 import '../home_screen/home_screen.dart';
 import '../../widgets/custom_page_scaffold.dart';
 import 'views/final_onboarding_view/final_onboarding_view.dart';
 import 'views/welcome_view/welcome_view.dart';
 
-class OnBoardingScreen extends StatefulWidget {
+class OnBoardingScreen extends ConsumerStatefulWidget {
   const OnBoardingScreen({super.key});
 
   @override
-  State<OnBoardingScreen> createState() => _OnBoardingScreenState();
+  ConsumerState<ConsumerStatefulWidget> createState() {
+    return _OnBoardingScreenState();
+  }
 }
 
-class _OnBoardingScreenState extends State<OnBoardingScreen> {
+class _OnBoardingScreenState extends ConsumerState<OnBoardingScreen> {
   late PageController _pageController;
   @override
   void initState() {
     _pageController = PageController();
+    ref.read(otpViewProvider.notifier).setOnSubmit(_goToNextPage);
     super.initState();
   }
 
@@ -38,24 +39,12 @@ class _OnBoardingScreenState extends State<OnBoardingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider<NameInputViewCubit>(
-            create: (context) => NameInputViewCubit()),
-        BlocProvider<PhoneInputViewCubit>(
-            create: (context) => PhoneInputViewCubit()),
-        BlocProvider<OtpViewCubit>(
-          create: (context) =>
-              OtpViewCubitImpl(const Initial(), onSubmit: _goToNextPage),
-        ),
-      ],
-      child: PageView(
-          allowImplicitScrolling: false,
-          physics:
-              const NeverScrollableScrollPhysics(), // navigation only through buttons
-          controller: _pageController,
-          children: _onboardingContentList()),
-    );
+    return PageView(
+        allowImplicitScrolling: false,
+        physics:
+            const NeverScrollableScrollPhysics(), // navigation only through buttons
+        controller: _pageController,
+        children: _onboardingContentList());
   }
 
   //Widget list 'views' to be rendered by PageView

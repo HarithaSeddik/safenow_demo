@@ -1,80 +1,77 @@
-import 'package:equatable/equatable.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
 part 'otp_view_state.dart';
 
-// abstraction over cubits helps with creating mock classes for testing
-abstract class OtpViewCubit implements Cubit<OtpViewState> {
+// abstraction over cubit (now notifier class) helps with creating mock classes for testing
+abstract class OtpViewNotifier implements StateNotifier<OtpViewState> {
   void onType(String otp);
 
   void resendCode();
 
   void timeOut();
 
-  void enableResend();
-
-  void onServerError(String err, Map<String, dynamic> details);
+  void onServerError(String err);
 
   void verified();
+
+  void setOnSubmit(Function onSubmit);
 }
 
-class OtpViewCubitImpl extends Cubit<OtpViewState> implements OtpViewCubit {
-  OtpViewCubitImpl(super.initialState, {required this.onSubmit});
-  final Function onSubmit;
-  //TODO: implement submit otp
-  void _submitOtp(String otp) async {
-    await Future.delayed(const Duration(seconds: 2));
-    onSubmit.call();
+class OtpViewNotifierImpl extends StateNotifier<OtpViewState>
+    implements OtpViewNotifier {
+  OtpViewNotifierImpl(super.initialState);
+
+  late Function _onSubmit;
+
+  @override
+  void setOnSubmit(Function onSubmit) {
+    _onSubmit = onSubmit;
   }
 
-  //TODO: implement resend otp
-  void _resendOtp() {}
+  void _submitOtp(String otp) async {
+    await Future.delayed(const Duration(seconds: 2));
+    _onSubmit.call();
+  }
+
+  void _resendOtp() {
+    throw UnimplementedError('_resendOtp not implemented');
+  }
+
   @override
   void onType(String otp) {
     if (otp.trim().length != 6) return;
-    emit(Loading());
+    state = Loading();
     _submitOtp(otp);
   }
 
   @override
   void resendCode() {
     _resendOtp();
-    emit(const Initial());
+    state = Initial();
   }
 
   @override
   void timeOut() {
-    emit(const TimedOut());
+    state = TimedOut();
   }
 
   @override
-  void enableResend() {
-    emit(const Initial(enableResend: true));
-  }
-
-  @override
-  void onServerError(String err, Map<String, dynamic> details) {
+  void onServerError(String err) {
     switch (err) {
-      case 'VE10001':
-        emit(TooManyRequests());
+      case 'errorCode1':
+        state = TooManyRequests();
         break;
-      case 'VE10002':
-        emit(TooManyAttempts());
+      case 'errorCode2':
+        state = TooManyAttempts();
         break;
-      case 'VE10004':
-        final isResendEnabled = state.enableResend;
-        emit(Incorrect(
-          details['remaining'].toString(),
-          details['LockedHours'].toString(),
-          'hour',
-          isResendEnabled,
-        ));
+      case 'errorCode3':
+        state = Incorrect('10');
         break;
     }
   }
 
   @override
   void verified() {
-    emit(const Verified());
+    state = Verified();
   }
 }

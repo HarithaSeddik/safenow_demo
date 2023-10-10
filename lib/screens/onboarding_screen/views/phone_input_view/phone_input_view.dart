@@ -1,31 +1,31 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:safenow_demo/providers/onboarding_screen_providers.dart';
 import 'package:safenow_demo/utils/constants/theme_constants.dart';
-
 import 'package:safenow_demo/utils/extensions/context_extensions.dart';
-import 'package:safenow_demo/screens/onboarding_screen/views/name_input_view/cubit/name_input_view_cubit.dart';
 import '../../../../widgets/custom_text_field.dart';
-import 'cubit/phone_input_view_cubit.dart';
 
-class PhoneInputView extends StatefulWidget {
+class PhoneInputView extends ConsumerWidget {
   const PhoneInputView({
     super.key,
     required this.onPressed,
   });
   final Function() onPressed;
 
-  @override
-  State<PhoneInputView> createState() => _PhoneInputViewState();
-}
-
-class _PhoneInputViewState extends State<PhoneInputView> {
   final String _titleText = "Nice to meet you, ";
+
   final String _bodyText =
       "To make sure that you are a real person, please enter your phone number here: ";
+
   final String _detailText = "Why do you need my phone number? ";
+
   final String _phoneTextLabel = "Phone";
+
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final userInputText = ref.watch(nameInputViewProvider).userInputText;
+    final nextButtonEnabled =
+        ref.watch(phoneInputViewProvider).nextButtonEnabled;
     return SizedBox(
       height: context.multiplierHeight(1),
       child: Column(
@@ -34,24 +34,19 @@ class _PhoneInputViewState extends State<PhoneInputView> {
           Container(
             margin: const EdgeInsets.only(top: 100),
             width: context.dynamicWidth(200),
-            child: BlocBuilder<NameInputViewCubit, NameInputViewState>(
-              bloc: BlocProvider.of<NameInputViewCubit>(context),
-              builder: (context, state) {
-                return RichText(
-                  text: TextSpan(
-                    children: <TextSpan>[
-                      TextSpan(
-                        text: _titleText,
-                      ),
-                      TextSpan(
-                        text: "${state.userInputText} 🎉",
-                      )
-                    ],
-                    style: Theme.of(context).textTheme.titleMedium,
+            child: RichText(
+              text: TextSpan(
+                children: <TextSpan>[
+                  TextSpan(
+                    text: _titleText,
                   ),
-                  textAlign: TextAlign.center,
-                );
-              },
+                  TextSpan(
+                    text: "$userInputText 🎉",
+                  )
+                ],
+                style: Theme.of(context).textTheme.titleMedium,
+              ),
+              textAlign: TextAlign.center,
             ),
           ),
           SizedBox(
@@ -65,17 +60,13 @@ class _PhoneInputViewState extends State<PhoneInputView> {
           const SizedBox(
             height: 50,
           ),
-          BlocBuilder<PhoneInputViewCubit, PhoneInputViewState>(
-            builder: (context, state) {
-              return CustomTextField(
-                arrowEnabled: state.nextButtonEnabled,
-                onChanged: BlocProvider.of<PhoneInputViewCubit>(context)
-                    .textFieldOnChanged,
-                textFieldLabel: _phoneTextLabel,
-                onArrowPressed: widget.onPressed,
-                isPhoneField: true,
-              );
-            },
+          CustomTextField(
+            arrowEnabled: nextButtonEnabled,
+            onChanged:
+                ref.read(phoneInputViewProvider.notifier).textFieldOnChanged,
+            textFieldLabel: _phoneTextLabel,
+            onArrowPressed: onPressed,
+            isPhoneField: true,
           ),
           const SizedBox(height: 50),
           Text.rich(
