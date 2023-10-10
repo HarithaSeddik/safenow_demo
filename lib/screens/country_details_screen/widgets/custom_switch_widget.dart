@@ -23,7 +23,7 @@ class CustomSwitchWidget extends ConsumerWidget {
       activeTextColor: ThemeConstants.primaryColor,
       inactiveTextColor: ThemeConstants.secondaryColor,
       inactiveSwitchBorder:
-          Border.all(color: ThemeConstants.primaryButtonColor, width: 3),
+          Border.all(color: const Color.fromARGB(255, 227, 234, 243), width: 3),
       padding: 20,
       toggleSize: 70,
       valueFontSize: 20.0,
