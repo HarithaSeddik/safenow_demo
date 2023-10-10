@@ -1,4 +1,4 @@
-part of 'phone_input_view_cubit.dart';
+part of 'phone_input_view_notifier.dart';
 
 final class PhoneInputViewState {
   const PhoneInputViewState({

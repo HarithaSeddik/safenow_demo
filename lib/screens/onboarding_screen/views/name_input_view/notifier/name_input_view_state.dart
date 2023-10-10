@@ -1,4 +1,4 @@
-part of 'name_input_view_cubit.dart';
+part of 'name_input_view_notifier.dart';
 
 final class NameInputViewState {
   const NameInputViewState({

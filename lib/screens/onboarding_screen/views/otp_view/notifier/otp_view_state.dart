@@ -1,4 +1,4 @@
-part of 'otp_view_cubit.dart';
+part of 'otp_view_notifier.dart';
 
 abstract class OtpViewState {
   const OtpViewState();
