@@ -9,12 +9,12 @@ import '../screens/onboarding_screen/views/phone_input_view/notifier/phone_input
 /// was Replaced with a StateNotifier
 final nameInputViewProvider =
     StateNotifierProvider<NameInputViewNotifier, NameInputViewState>((ref) {
-  return NameInputViewNotifier();
+  return NameInputViewNotifierImpl();
 });
 
 final phoneInputViewProvider =
     StateNotifierProvider<PhoneInputViewNotifier, PhoneInputViewState>(
-  (ref) => PhoneInputViewNotifier(),
+  (ref) => PhoneInputViewNotifierImpl(),
 );
 
 final otpViewProvider = StateNotifierProvider<OtpViewNotifier, OtpViewState>(
